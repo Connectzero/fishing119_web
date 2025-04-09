@@ -1,39 +1,96 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
+    <!--
+      If you are serving your web app in a path other than the root, change the
+      href value below to reflect the base path you are serving from.
 
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
+      The path provided below has to start and end with a slash "/" in order for
+      it to work correctly.
 
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+      For more details:
+      * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
 
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="/fishing119_web/">
+      This is a placeholder for base href that will be replaced by the value of
+      the `--base-href` argument provided to `flutter build`.
+    -->
+    <base href="/">
 
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+    <meta charset="UTF-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="description" content="A new Flutter project.">
 
-  <!-- iOS meta tags & icons -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="fishing_119">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+    <!-- iOS meta tags & icons -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="fishing_119">
+    <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>fishing_119</title>
-  <link rel="manifest" href="manifest.json">
+    <title>fishing_119</title>
+    <link rel="manifest" href="manifest.json">
+
+    <style>
+        /* 기본 body 스타일 설정 */
+           body {
+             margin: 0;
+             background-color: #ffffff;
+           }
+
+        /* 스플래시 화면 전체 스타일 */
+        #splash-screen {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: #fafafa;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 9999;
+          flex-direction: column;
+        }
+
+           /* 스피너 스타일 */
+           .spinner {
+             margin-top: 24px;
+             width: 24px;
+             height: 24px;
+             border: 4px solid #74D2E7;
+             border-top: 4px solid transparent;
+             border-radius: 50%;
+             animation: spin 1s linear infinite;
+           }
+
+           @keyframes spin {
+             0% {
+               transform: rotate(0deg);
+             }
+
+             100% {
+               transform: rotate(360deg);
+             }
+           }
+    </style>
+
 </head>
 <body>
-  <h1>보이니?</h1>
-  <script src="flutter_bootstrap.js" async></script>
+<div id="splash-screen">
+    <div class="spinner"></div>
+</div>
+<!-- Flutter 앱의 첫 프레임이 렌더링될 때 스플래시 화면 숨기기 -->
+<script>
+    window.addEventListener('flutter-first-frame', function () {
+      var splashScreen = document.getElementById('splash-screen');
+      if (splashScreen != null) {
+        splashScreen.style.display = 'none';
+      }
+    });
+</script>
+
+<script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
